@@ -30,9 +30,13 @@ jobs:
         run: |
           git config --global user.name 'HowTT8998'
           git config --global user.email 'ht.howardtan@gmail.com'
-          git add .
-          git commit -am "dist build"
-          git push
+          if [ -n "$(git status --porcelain)" ]; then
+            git add .
+            git commit -am "dist build"
+            git push
+          else
+            echo "No changes to commit."
+          fi
 
   release:
     runs-on: ubuntu-latest
