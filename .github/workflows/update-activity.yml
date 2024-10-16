@@ -8,6 +8,13 @@ on:
 jobs:
   update-activity:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Allows writing to the repository (e.g., updating the README)
+      public_repo: read # Allows reading public repositories
+      repository_projects: read # Allows reading projects associated with the repository
+      actions: read      # Allows reading actions
+      # Add additional permissions as needed
+    
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -22,3 +29,4 @@ jobs:
           IGNORE_EVENTS: "[]"
           README_PATH: README.md
           COMMIT_MESSAGE: "⚡ Update README.md with latest activity"
+
