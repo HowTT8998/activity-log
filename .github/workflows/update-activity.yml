@@ -16,7 +16,7 @@ jobs:
         uses: ./
         with:
           GITHUB_USERNAME: "thedannicraft"
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Use your PAT here
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
           EVENT_LIMIT: 10
           OUTPUT_STYLE: MARKDOWN
           IGNORE_EVENTS: "[]"
