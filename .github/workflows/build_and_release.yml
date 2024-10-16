@@ -28,7 +28,7 @@ jobs:
           npm run build
       - name: Commit
         run: |
-          git config --global user.name 'howtt8998'
+          git config --global user.name 'HowTT8998'
           git config --global user.email 'ht.howardtan@gmail.com'
           git add .
           git commit -am "dist build"
@@ -41,7 +41,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Pull latest
         run: |
-          git config --global user.name 'howtt8998'
+          git config --global user.name 'HowTT8998'
           git config --global user.email 'ht.howardtan@gmail.com'
           git pull
       - name: Tag it
