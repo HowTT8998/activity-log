@@ -8,13 +8,6 @@ on:
 jobs:
   update-activity:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write  # Allows writing to the repository (e.g., updating the README)
-      public_repo: read # Allows reading public repositories
-      repository_projects: read # Allows reading projects associated with the repository
-      actions: read      # Allows reading actions
-      # Add additional permissions as needed
-    
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -23,10 +16,9 @@ jobs:
         uses: ./
         with:
           GITHUB_USERNAME: "thedannicraft"
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }} # Update this
           EVENT_LIMIT: 10
           OUTPUT_STYLE: MARKDOWN
           IGNORE_EVENTS: "[]"
           README_PATH: README.md
           COMMIT_MESSAGE: "⚡ Update README.md with latest activity"
-
