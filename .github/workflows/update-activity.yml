@@ -9,14 +9,12 @@ jobs:
   update-activity:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        
+      - uses: actions/checkout@v4
       - name: Run Update GitHub Activity
         uses: ./
         with:
-          GITHUB_USERNAME: "howtt8998"
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USERNAME: "thedannicraft"
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
           EVENT_LIMIT: 10
           OUTPUT_STYLE: MARKDOWN
           IGNORE_EVENTS: "[]"
