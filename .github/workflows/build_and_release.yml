@@ -50,7 +50,6 @@ jobs:
         env:
           INPUT_GITHUB_USERNAME: "howtt8998"
           INPUT_GITHUB_TOKEN: ${{ secrets.JIRA_ACTION_SECRETS }}
-          INPUT_TARGET_REPOS: '[howtt8998/activity-log]'
           INPUT_OUTPUT_STYLE: MARKDOWN
           INPUT_IGNORE_EVENTS: '[]'
           INPUT_README_PATH: README.md
