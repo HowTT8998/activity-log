@@ -17,7 +17,8 @@ jobs:
         shell: bash
     steps:
       - uses: actions/checkout@v4
-      - name: Checkout code
+      - name: Set up Node
+        uses: actions/setup_node@v4
         with:
           node-version: 20
       - name: Build
@@ -72,7 +73,7 @@ jobs:
           git tag -a build_and_release.yml -m "更新標籤" master
           git push --tags -f
       - name: Release
-        uses: actions/create-release@v2
+        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
