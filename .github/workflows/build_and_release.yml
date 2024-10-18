@@ -1,7 +1,7 @@
 name: Build and Release
 
 on:
-  workflow_dispatch: # Allows manual triggering
+  workflow_dispatch: 
     inputs:
       tag:
         description: 'Tag name'     
@@ -33,7 +33,7 @@ jobs:
           if [ -n "$(git status --porcelain)" ]; then
             git add .
             git commit -am "dist build"
-            git push
+            git push || echo "No changes to push."
           else
             echo "No changes to commit."
           fi
@@ -49,7 +49,7 @@ jobs:
       - name: Test index.js
         env:
           INPUT_GITHUB_USERNAME: 'howtt8998'
-          INPUT_GITHUB_TOKEN: ${{ secrets.JIRA_ACTION_SECRETS }}
+          INPUT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Fixed the token issue
           INPUT_TARGET_REPOS: '[howtt8998/activity-log]'
           INPUT_OUTPUT_STYLE: MARKDOWN
           INPUT_IGNORE_EVENTS: '[]'
@@ -70,10 +70,10 @@ jobs:
           git pull
       - name: Tag it
         run: |
-          git tag -a build_and_release.yml -m "更新標籤" master
+          git tag -a ${{ inputs.tag }} -m "更新標籤" master # Use the input tag value
           git push --tags -f
       - name: Release
-        uses: actions/create-release@v1
+        uses: actions/create-release@v1.0.0 # Updated action version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
