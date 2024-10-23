@@ -28,7 +28,7 @@ jobs:
           npm run build
       - name: Commit
         run: |
-          git config --global user.name 'howtt8998'
+          git config --global user.name 'HowTT8998'
           git config --global user.email 'ht.howardtan@gmail.com'
           if [ -n "$(git status --porcelain)" ]; then
             git add .
@@ -47,7 +47,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Test index.js
         env:
-          INPUT_GITHUB_USERNAME: "howtt8998"
+          INPUT_GITHUB_USERNAME: "HowTT8998"
           INPUT_GITHUB_TOKEN: ${{ secrets.JIRA_ACTION_SECRETS }}
           INPUT_TARGET_REPOS: '[howtt8998/activity-log]'
           INPUT_OUTPUT_STYLE: MARKDOWN
@@ -64,7 +64,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Pull latest
         run: |
-          git config --global user.name 'howtt8998'
+          git config --global user.name 'HowTT8998'
           git config --global user.email 'ht.howardtan@gmail.com'
           git pull
       - name: Tag it
