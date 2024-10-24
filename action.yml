@@ -34,5 +34,5 @@ branding:
   icon: activity
 
 runs:
-  using:  node
+  using:  node20
   main:  ./dist/index.js
