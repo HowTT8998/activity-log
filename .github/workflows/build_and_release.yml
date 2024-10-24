@@ -37,6 +37,25 @@ jobs:
           else
             echo "No changes to commit."
           fi
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test index.js
+        env:
+          INPUT_GITHUB_USERNAME: "HowTT8998"
+          INPUT_GITHUB_TOKEN: ${{ secrets.JIRA_ACTION_SECRETS }}
+          INPUT_TARGET_REPOS: '[HowTT8998/activity-log]'
+          INPUT_OUTPUT_STYLE: MARKDOWN
+          INPUT_IGNORE_EVENTS: '[]'
+          INPUT_README_PATH: README.md
+          INPUT_COMMIT_MESSAGE: Update README.md
+          INPUT_EVENT_LIMIT: '100'
+        run: node ./dist/index.js
 
   release:
     runs-on: ubuntu-latest
